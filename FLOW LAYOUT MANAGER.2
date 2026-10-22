@@ -1,0 +1,44 @@
+CODE:
+
+import javax.swing.*;
+import java.awt.*;
+
+public class BorderLayoutDemo {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("BorderLayout Dashboard");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(450, 300);
+
+        frame.setLayout(new BorderLayout(10, 10));
+
+        // North Region (Header)
+        JLabel header = new JLabel("Header: Dashboard Application", JLabel.CENTER);
+        header.setOpaque(true);
+        header.setBackground(Color.LIGHT_GRAY);
+        frame.add(header, BorderLayout.NORTH);
+
+        // South Region (Footer)
+        JLabel footer = new JLabel("Footer: © 2026 Company Inc.", JLabel.CENTER);
+        footer.setOpaque(true);
+        footer.setBackground(Color.LIGHT_GRAY);
+        frame.add(footer, BorderLayout.SOUTH);
+
+        // West Region (Menu)
+        JPanel menuPanel = new JPanel();
+        menuPanel.setLayout(new GridLayout(3, 1, 5, 5));
+        menuPanel.add(new JButton("Home"));
+        menuPanel.add(new JButton("Profile"));
+        menuPanel.add(new JButton("Settings"));
+        frame.add(menuPanel, BorderLayout.WEST);
+
+        // Center Region (Content)
+        JTextArea contentArea = new JTextArea("Main Content Area:\nWelcome to the admin dashboard.");
+        frame.add(new JScrollPane(contentArea), BorderLayout.CENTER);
+
+        frame.setVisible(true);
+    }
+}
+
+OUTPUT:
+
+A window divided into 5 distinct regions: a header banner at the top, a footer bar at the bottom, a vertical button menu on the left, and a main text area occupying the center.
