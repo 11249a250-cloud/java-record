@@ -1,0 +1,30 @@
+CODE:
+
+import java.applet.Applet;
+import java.awt.*;
+
+/*
+<applet code="AppletShapesAndText" width="400" height="250">
+</applet>
+*/
+public class AppletShapesAndText extends Applet {
+    @Override
+    public void paint(Graphics g) {
+        // Filled Red Rectangle
+        g.setColor(Color.RED);
+        g.fillRect(50, 40, 120, 80);
+
+        // Filled Blue Oval
+        g.setColor(Color.BLUE);
+        g.fillOval(200, 40, 100, 80);
+
+        // Bold Font Message
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 16));
+        g.drawString("Java Applets are fun!", 100, 160);
+    }
+}
+
+OUTPUT:
+
+Renders a solid red rectangle on the left, a solid blue oval on the right, and the text "Java Applets are fun!" in bold black text centered below them.
