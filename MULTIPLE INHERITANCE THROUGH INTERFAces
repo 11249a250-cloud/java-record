@@ -1,0 +1,54 @@
+CODE:
+
+interface AcademicRecord {
+    void displayAcademicDetails();
+}
+
+interface SportsRecord {
+    void displaySportsDetails();
+}
+
+// Implementing multiple interfaces to achieve multiple inheritance behavior
+class ScholarAthlete implements AcademicRecord, SportsRecord {
+    String name;
+    double gpa;
+    String sportName;
+
+    public ScholarAthlete(String name, double gpa, String sportName) {
+        this.name = name;
+        this.gpa = gpa;
+        this.sportName = sportName;
+    }
+
+    @Override
+    public void displayAcademicDetails() {
+        System.out.println("Student Name : " + name);
+        System.out.println("Academic GPA : " + gpa);
+    }
+
+    @Override
+    public void displaySportsDetails() {
+        System.out.println("Main Sport   : " + sportName);
+    }
+
+    public void displayCompleteProfile() {
+        System.out.println("--- Scholar Athlete Profile ---");
+        displayAcademicDetails();
+        displaySportsDetails();
+    }
+}
+
+public class MultipleInheritanceInterfaceDemo {
+    public static void main(String[] args) {
+        ScholarAthlete athlete = new ScholarAthlete("Rahul Verma", 9.4, "Basketball");
+        athlete.displayCompleteProfile();
+    }
+}
+
+
+OUTPUT:
+
+--- Scholar Athlete Profile ---
+Student Name : Rahul Verma
+Academic GPA : 9.4
+Main Sport   : Basketball
