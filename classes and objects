@@ -1,0 +1,52 @@
+code:
+
+class Student {
+    String name;
+    int rollNumber;
+    double marks;
+
+    // Constructor to initialize student details
+    public Student(String name, int rollNumber, double marks) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.marks = marks;
+    }
+
+    // Method to calculate grade
+    public char calculateGrade() {
+        if (marks >= 90) {
+            return 'A';
+        } else if (marks >= 75) {
+            return 'B';
+        } else if (marks >= 60) {
+            return 'C';
+        } else if (marks >= 40) {
+            return 'D';
+        } else {
+            return 'F';
+        }
+    }
+
+    // Method to display student information
+    public void display() {
+        System.out.println("Name: " + name + ", Roll Number: " + rollNumber + 
+                           ", Marks: " + marks + ", Grade: " + calculateGrade());
+    }
+}
+
+public class StudentRecordSystem {
+    public static void main(String[] args) {
+        // Creating at least two student objects
+        Student student1 = new Student("Aarav Sharma", 101, 88.5);
+        Student student2 = new Student("Priya Patel", 102, 92.0);
+
+        // Displaying details and grades
+        student1.display();
+        student2.display();
+    }
+}
+
+outp[ut:
+
+Name: Aarav Sharma, Roll Number: 101, Marks: 88.5, Grade: B
+Name: Priya Patel, Roll Number: 102, Marks: 92.0, Grade: A
