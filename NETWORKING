@@ -1,0 +1,66 @@
+SERVER CODE:
+
+import java.io.*;
+import java.net.*;
+
+public class Server {
+    public static void main(String[] args) {
+        int port = 5000;
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            System.out.println("Server is running and waiting for client connection on port " + port + "...");
+            
+            Socket socket = serverSocket.accept();
+            System.out.println("Client connected successfully!");
+
+            // Read message from client
+            BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String clientMessage = input.readLine();
+            System.out.println("Received from client: " + clientMessage);
+
+            // Send response back to client
+            PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
+            output.println("Hello from Server! Connection acknowledged.");
+
+        } catch (IOException e) {
+            System.out.println("Server exception: " + e.getMessage());
+        }
+    }
+}
+
+CLIENT CODE:
+
+import java.io.*;
+import java.net.*;
+
+public class Client {
+    public static void main(String[] args) {
+        String host = "127.0.0.1";
+        int port = 5000;
+
+        try (Socket socket = new Socket(host, port)) {
+            System.out.println("Connected to the server.");
+
+            // Send message to server
+            PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
+            output.println("Hello Server, I am connected!");
+
+            // Read response from server
+            BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String serverResponse = input.readLine();
+            System.out.println("Received from server: " + serverResponse);
+
+        } catch (IOException e) {
+            System.out.println("Client exception: " + e.getMessage());
+        }
+    }
+}
+
+
+OUTPUT:
+
+Server is running and waiting for client connection on port 5000...
+Client connected successfully!
+Received from client: Hello Server, I am connected!
+
+Connected to the server.
+Received from server: Hello from Server! Connection acknowledged.
