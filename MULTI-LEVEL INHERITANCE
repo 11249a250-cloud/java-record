@@ -1,0 +1,92 @@
+CODE:
+
+class Student {
+    int rollNumber;
+    String studentName;
+
+    public Student(int rollNumber, String studentName) {
+        this.rollNumber = rollNumber;
+        this.studentName = studentName;
+    }
+
+    public void displayStudent() {
+        System.out.println("Roll Number   : " + rollNumber);
+        System.out.println("Student Name  : " + studentName);
+    }
+}
+
+class Marks extends Student {
+    double[] subjects = new double[5];
+
+    public Marks(int rollNumber, String studentName, double[] subjects) {
+        super(rollNumber, studentName);
+        this.subjects = subjects;
+    }
+
+    public void displayMarks() {
+        displayStudent();
+        System.out.print("Marks         : ");
+        for (double m : subjects) {
+            System.out.print(m + " ");
+        }
+        System.out.println();
+    }
+}
+
+class Result extends Marks {
+    double totalMarks;
+    double averageMarks;
+    char grade;
+
+    public Result(int rollNumber, String studentName, double[] subjects) {
+        super(rollNumber, studentName, subjects);
+    }
+
+    public void processResult() {
+        totalMarks = 0;
+        for (double m : subjects) {
+            totalMarks += m;
+        }
+        averageMarks = totalMarks / subjects.length;
+
+        if (averageMarks >= 90) {
+            grade = 'A';
+        } else if (averageMarks >= 75) {
+            grade = 'B';
+        } else if (averageMarks >= 60) {
+            grade = 'C';
+        } else if (averageMarks >= 40) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+    }
+
+    public void displayResult() {
+        displayMarks();
+        System.out.println("Total Marks   : " + totalMarks + " / 500");
+        System.out.println("Average Marks : " + averageMarks);
+        System.out.println("Final Grade   : " + grade);
+    }
+}
+
+public class MultilevelInheritanceDemo {
+    public static void main(String[] args) {
+        double[] studentMarks = {85.0, 90.0, 78.0, 92.0, 88.0};
+        Result studentResult = new Result(501, "Sneha Reddy", studentMarks);
+        
+        studentResult.processResult();
+        System.out.println("--- University Student Result ---");
+        studentResult.displayResult();
+    }
+}
+
+OUTPUT:
+
+--- University Student Result ---
+Roll Number   : 501
+Student Name  : Sneha Reddy
+Marks         : 85.0 90.0 78.0 92.0 88.0 
+Total Marks   : 433.0 / 500
+Average Marks : 86.6
+Final Grade   : B
