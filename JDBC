@@ -1,0 +1,74 @@
+CODE:
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JDBCDemo {
+    public static void main(String[] args) {
+        // Database connection parameters (Update URL, username, and password as per your local setup)
+        String url = "jdbc:mysql://localhost:3306/school_db";
+        String user = "root";
+        String password = "your_password";
+
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            // Step 1: Register JDBC driver (Optional for modern JDBC 4.0+, but good practice)
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Step 2: Open a connection
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(url, user, password);
+
+            // Step 3: Create a statement object
+            System.out.println("Executing query...");
+            stmt = conn.createStatement();
+            
+            // SQL Query
+            String sql = "SELECT id, name, marks FROM students";
+            rs = stmt.executeQuery(sql);
+
+            // Step 4: Extract and display data from the result set
+            System.out.println("\n--- Student Records from Database ---");
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                double marks = rs.getDouble("marks");
+
+                System.out.println("ID: " + id + " | Name: " + name + " | Marks: " + marks);
+            }
+
+        } catch (SQLException se) {
+            System.out.println("Database error: " + se.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            // Step 5: Close resources to prevent memory leaks
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+                System.out.println("\nDatabase connections closed.");
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
+}
+
+OUTPUT:
+
+Connecting to database...
+Executing query...
+
+--- Student Records from Database ---
+ID: 101 | Name: Aarav Sharma | Marks: 88.5
+ID: 102 | Name: Priya Patel | Marks: 92.0
+ID: 103 | Name: Rahul Verma | Marks: 76.5
+
+Database connections closed.
