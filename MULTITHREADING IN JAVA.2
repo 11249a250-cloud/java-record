@@ -1,0 +1,34 @@
+CODE:
+
+class CounterTask extends Thread {
+    @Override
+    public void run() {
+        System.out.println("--- Task Manager: Counter Started ---");
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Count: " + i);
+            try {
+                Thread.sleep(1000); // 1-second delay
+            } catch (InterruptedException e) {
+                System.out.println("Counter thread interrupted.");
+            }
+        }
+        System.out.println("--- Task Manager: Counter Finished ---");
+    }
+}
+
+public class TaskManagerApp {
+    public static void main(String[] args) {
+        CounterTask task = new CounterTask();
+        task.start();
+    }
+}
+
+OUTPUT:
+
+--- Task Manager: Counter Started ---
+Count: 1
+Count: 2
+Count: 3
+Count: 4
+Count: 5
+--- Task Manager: Counter Finished ---
