@@ -1,0 +1,44 @@
+CODE:
+
+import javax.swing.*;
+import java.awt.*;
+
+public class CalculatorLayoutDemo {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Calculator Layout");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 400);
+
+        frame.setLayout(new BorderLayout());
+
+        // Display screen at the top
+        JTextField display = new JTextField("0");
+        display.setHorizontalAlignment(JTextField.RIGHT);
+        display.setFont(new Font("Arial", Font.BOLD, 22));
+        display.setEditable(false);
+        frame.add(display, BorderLayout.NORTH);
+
+        // Button panel with 4x4 GridLayout
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(4, 4, 5, 5));
+
+        String[] buttons = {
+            "7", "8", "9", "/",
+            "4", "5", "6", "*",
+            "1", "2", "3", "-",
+            "0", "C", "=", "+"
+        };
+
+        for (String text : buttons) {
+            buttonPanel.add(new JButton(text));
+        }
+
+        frame.add(buttonPanel, BorderLayout.CENTER);
+
+        frame.setVisible(true);
+    }
+}
+
+OUTPUT:
+
+A calculator-styled GUI window with a screen input at the top and a structured 4x4 grid of equal-sized uniform buttons for digits and operators beneath it.
