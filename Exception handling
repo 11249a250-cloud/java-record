@@ -1,0 +1,45 @@
+CODE:
+
+public class ExceptionHandlingDemo {
+    public static void main(String[] args) {
+        // --- 1. Handling ArrayIndexOutOfBoundsException in Railway App ---
+        String[] trainCodes = {"12951", "12009", "12625"};
+        
+        System.out.println("--- Railway App: Train Codes Access ---");
+        try {
+            // Attempting to access an index beyond array bounds
+            System.out.println("Accessing train code at index 5: " + trainCodes[5]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Caught Exception: Invalid train index accessed! (" + e.getMessage() + ")");
+        }
+
+        // --- 2. Demonstrating Predefined Exceptions ---
+        System.out.println("\n--- Demonstrating Predefined Exceptions ---");
+
+        // ArithmeticException demonstration
+        try {
+            int totalDays = 365;
+            int batches = 0;
+            int daysPerBatch = totalDays / batches; // Division by zero
+        } catch (ArithmeticException e) {
+            System.out.println("Caught ArithmeticException: Division by zero is not allowed.");
+        }
+
+        // NumberFormatException demonstration
+        try {
+            String invalidAgeInput = "twenty-one";
+            int age = Integer.parseInt(invalidAgeInput); // Invalid number conversion
+        } catch (NumberFormatException e) {
+            System.out.println("Caught NumberFormatException: Cannot parse non-numeric string into an integer.");
+        }
+    }
+}
+
+OUTPUT:
+
+--- Railway App: Train Codes Access ---
+Caught Exception: Invalid train index accessed! (Index 5 out of bounds for length 3)
+
+--- Demonstrating Predefined Exceptions ---
+Caught ArithmeticException: Division by zero is not allowed.
+Caught NumberFormatException: Cannot parse non-numeric string into an integer.
