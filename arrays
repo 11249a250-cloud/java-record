@@ -1,0 +1,45 @@
+code:
+
+public class ArrayCalculationsDemo {
+    public static void main(String[] args) {
+        // --- 1. Monthly Sales for one year ---
+        double[] monthlySales = {
+            450000.0, 520000.0, 380000.0, 610000.0, 
+            720000.0, 490000.0, 530000.0, 410000.0, 
+            680000.0, 850000.0, 910000.0, 750000.0
+        };
+
+        double maxSales = monthlySales[0];
+        double minSales = monthlySales[0];
+
+        for (int i = 1; i < monthlySales.length; i++) {
+            if (monthlySales[i] > maxSales) {
+                maxSales = monthlySales[i];
+            }
+            if (monthlySales[i] < minSales) {
+                minSales = monthlySales[i];
+            }
+        }
+
+        System.out.println("Highest Sales (Maximum): ₹" + maxSales);
+        System.out.println("Lowest Sales (Minimum): ₹" + minSales);
+
+        // --- 2. Survey feedback ratings (5 ratings) ---
+        int[] ratings = {4, 5, 3, 4, 5};
+        int sum = 0;
+
+        for (int rating : ratings) {
+            sum += rating;
+        }
+
+        double averageRating = (double) sum / ratings.length;
+        System.out.println("\nSurvey Feedback Average: " + averageRating);
+    }
+}
+
+output:
+
+Highest Sales (Maximum): ₹910000.0
+Lowest Sales (Minimum): ₹380000.0
+
+Survey Feedback Average: 4.2
