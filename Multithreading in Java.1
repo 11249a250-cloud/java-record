@@ -1,0 +1,44 @@
+CODE:
+
+class OrderPlacementThread extends Thread {
+    @Override
+    public void run() {
+        try {
+            System.out.println("[Thread-1] Order placement initiated...");
+            Thread.sleep(500); // Simulating processing time
+            System.out.println("[Thread-1] Order successfully placed!");
+        } catch (InterruptedException e) {
+            System.out.println("Order placement interrupted.");
+        }
+    }
+}
+
+class OrderDeliveryThread extends Thread {
+    @Override
+    public void run() {
+        try {
+            System.out.println("[Thread-2] Order delivery assigned to delivery partner...");
+            Thread.sleep(1000); // Simulating delivery time
+            System.out.println("[Thread-2] Order delivered successfully!");
+        } catch (InterruptedException e) {
+            System.out.println("Order delivery interrupted.");
+        }
+    }
+}
+
+public class FoodDeliveryApp {
+    public static void main(String[] args) {
+        OrderPlacementThread placement = new OrderPlacementThread();
+        OrderDeliveryThread delivery = new OrderDeliveryThread();
+
+        placement.start();
+        delivery.start();
+    }
+}
+
+OUTPUT:
+
+[Thread-1] Order placement initiated...
+[Thread-2] Order delivery assigned to delivery partner...
+[Thread-1] Order successfully placed!
+[Thread-2] Order delivered successfully!
