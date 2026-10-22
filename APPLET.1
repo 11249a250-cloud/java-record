@@ -1,0 +1,37 @@
+CODE:
+
+import java.applet.Applet;
+import java.awt.*;
+
+/*
+<applet code="GeometricShapesApplet" width="400" height="300">
+</applet>
+*/
+public class GeometricShapesApplet extends Applet {
+    @Override
+    public void paint(Graphics g) {
+        g.setColor(Color.BLACK);
+        
+        // Line
+        g.drawLine(30, 30, 150, 30);
+        g.drawString("Line", 80, 50);
+
+        // Rectangle
+        g.drawRect(30, 70, 100, 60);
+        g.drawString("Rectangle", 50, 145);
+
+        // Circle (Oval with equal width and height)
+        g.drawOval(160, 70, 60, 60);
+        g.drawString("Circle", 175, 145);
+
+        // Triangle (using drawPolygon)
+        int[] xPoints = {80, 30, 130};
+        int[] yPoints = {160, 240, 240};
+        g.drawPolygon(xPoints, yPoints, 3);
+        g.drawString("Triangle", 70, 260);
+    }
+}
+
+OUTPUT:
+
+Renders a canvas displaying a straight line, a rectangle, a circle, and a triangle with descriptive labels underneath each shape
