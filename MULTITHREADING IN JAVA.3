@@ -1,0 +1,34 @@
+CODE:
+
+class PaymentProcess implements Runnable {
+    @Override
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Payment Processing... (" + i + "/5)");
+            try {
+                Thread.sleep(400); // Small pause for simulation
+            } catch (InterruptedException e) {
+                System.out.println("Payment process interrupted.");
+            }
+        }
+        System.out.println("Payment Completed Successfully!");
+    }
+}
+
+public class PaymentGatewayApp {
+    public static void main(String[] args) {
+        PaymentProcess paymentTask = new PaymentProcess();
+        Thread paymentThread = new Thread(paymentTask);
+        
+        paymentThread.start();
+    }
+}
+
+OUTPUT:
+
+Payment Processing... (1/5)
+Payment Processing... (2/5)
+Payment Processing... (3/5)
+Payment Processing... (4/5)
+Payment Processing... (5/5)
+Payment Completed Successfully!
