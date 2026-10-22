@@ -1,0 +1,37 @@
+code:
+
+package studentInfo;
+
+public class Student {
+    private String name;
+    private int rollNumber;
+
+    public Student(String name, int rollNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+    }
+
+    public void displayInfo() {
+        System.out.println("--- Student Information (from package studentInfo) ---");
+        System.out.println("Student Name : " + name);
+        System.out.println("Roll Number  : " + rollNumber);
+    }
+}
+
+MAIN FILE:
+
+import studentInfo.Student;
+
+public class SchoolApp {
+    public static void main(String[] args) {
+        // Creating an object of Student class imported from the package
+        Student student = new Student("Ananya Iyer", 204);
+        student.displayInfo();
+    }
+}
+
+OUTPUT:
+
+--- Student Information (from package studentInfo) ---
+Student Name : Ananya Iyer
+Roll Number  : 204
