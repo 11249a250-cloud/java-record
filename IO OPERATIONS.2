@@ -1,0 +1,41 @@
+CODE:
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class TextEditorIOChar {
+    public static void main(String[] args) {
+        String content = "Welcome to the Text Editor!\nThis file demonstrates character-based I/O using FileWriter and FileReader.\nJava I/O streams make text handling seamless.";
+        String fileName = "editor_note.txt";
+
+        // 1. Writing content using FileWriter
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write(content);
+            System.out.println("Content successfully written to " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error writing file: " + e.getMessage());
+        }
+
+        // 2. Reading content back using FileReader
+        System.out.println("\n--- Reading Content from Text Editor File ---");
+        try (FileReader reader = new FileReader(fileName)) {
+            int ch;
+            while ((ch = reader.read()) != -1) {
+                System.out.print((char) ch);
+            }
+            System.out.println();
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+}
+
+OUTPUT:
+
+Content successfully written to editor_note.txt
+
+--- Reading Content from Text Editor File ---
+Welcome to the Text Editor!
+This file demonstrates character-based I/O using FileWriter and FileReader.
+Java I/O streams make text handling seamless.
