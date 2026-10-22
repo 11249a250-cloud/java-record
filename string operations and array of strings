@@ -1,0 +1,56 @@
+code:
+
+public class StringOperationsDemo {
+    public static void main(String[] args) {
+        // --- 1. Compare two employee names/departments ---
+        String emp1 = "Rahul_IT";
+        String emp2 = "Amit_IT";
+
+        // Extracting departments using String functions (substring and indexOf)
+        String dept1 = emp1.substring(emp1.indexOf("_") + 1);
+        String dept2 = emp2.substring(emp2.indexOf("_") + 1);
+
+        System.out.println("Employee 1 Department: " + dept1);
+        System.out.println("Employee 2 Department: " + dept2);
+
+        if (dept1.equalsIgnoreCase(dept2)) {
+            System.out.println("Result: Both employees work in the same department.\n");
+        } else {
+            System.out.println("Result: Employees work in different departments.\n");
+        }
+
+        // --- 2. Library system storing 10 books using arrays ---
+        String[] books = {
+            "Atomic Habits", 
+            "Bhagavad Gita", 
+            "Advanced Java", 
+            "C++ Programming", 
+            "Algorithms", 
+            "Data Structures", 
+            "Artificial Intelligence", 
+            "Python Basics", 
+            "Automata Theory", 
+            "Basic Math"
+        };
+
+        System.out.println("Library Books starting with letter 'A':");
+        for (String book : books) {
+            if (book.startsWith("A") || book.startsWith("a")) {
+                System.out.println("- " + book);
+            }
+        }
+    }
+}
+
+output:
+
+Employee 1 Department: IT
+Employee 2 Department: IT
+Result: Both employees work in the same department.
+
+Library Books starting with letter 'A':
+- Atomic Habits
+- Advanced Java
+- Algorithms
+- Artificial Intelligence
+- Automata Theory
