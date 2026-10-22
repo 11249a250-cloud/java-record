@@ -1,0 +1,27 @@
+CODE:
+
+import javax.swing.*;
+import java.awt.*;
+
+public class FlowLayoutDemo {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("FlowLayout Demo");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(350, 150);
+
+        // Setting FlowLayout with centered alignment and 10px gaps
+        frame.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+
+        frame.add(new JButton("Button 1"));
+        frame.add(new JButton("Button 2"));
+        frame.add(new JButton("Button 3"));
+        frame.add(new JButton("Button 4"));
+        frame.add(new JButton("Button 5"));
+
+        frame.setVisible(true);
+    }
+}
+
+OUTPUT:
+
+A window opens displaying five buttons aligned sequentially in a row, wrapping to the next line if the window width is reduced.
