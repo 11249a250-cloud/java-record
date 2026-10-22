@@ -1,0 +1,63 @@
+CODE:
+
+class Employee {
+    int empId;
+    String name;
+    double basicSalary;
+
+    public Employee(int empId, String name, double basicSalary) {
+        this.empId = empId;
+        this.name = name;
+        this.basicSalary = basicSalary;
+    }
+
+    public void displayDetails() {
+        System.out.println("Employee ID   : " + empId);
+        System.out.println("Name          : " + name);
+        System.out.println("Basic Salary  : ₹" + basicSalary);
+    }
+}
+
+class PermanentEmployee extends Employee {
+    double hra;
+    double da;
+    double grossSalary;
+
+    public PermanentEmployee(int empId, String name, double basicSalary, double hra, double da) {
+        super(empId, name, basicSalary);
+        this.hra = hra;
+        this.da = da;
+    }
+
+    public void calculateGrossSalary() {
+        grossSalary = basicSalary + hra + da;
+    }
+
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("HRA           : ₹" + hra);
+        System.out.println("DA            : ₹" + da);
+        System.out.println("Gross Salary  : ₹" + grossSalary);
+    }
+}
+
+public class SingleInheritanceDemo {
+    public static void main(String[] args) {
+        PermanentEmployee emp = new PermanentEmployee(101, "Amit Kumar", 45000.0, 12000.0, 8000.0);
+        emp.calculateGrossSalary();
+        System.out.println("--- Permanent Employee Details ---");
+        emp.displayDetails();
+    }
+}
+
+
+OUTPUT:
+
+--- Permanent Employee Details ---
+Employee ID   : 101
+Name          : Amit Kumar
+Basic Salary  : ₹45000.0
+HRA           : ₹12000.0
+DA            : ₹8000.0
+Gross Salary  : ₹65000.0
